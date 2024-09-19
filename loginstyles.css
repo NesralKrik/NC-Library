@@ -1,0 +1,195 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; 
+    background-color: #f0f0f0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px; 
+}
+
+.login-container, #signup-container {
+    background-color: #ffffff; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    color: #333; 
+    border: 1px solid #ccc; 
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333; 
+    font-size: 28px; 
+    font-weight: 700; 
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px; 
+    color: #666; 
+    font-size: 14px; 
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9; 
+    color: #333; 
+    transition: border-color 0.3s ease; 
+}
+
+.input-group input:focus {
+    border-color: #007bff; 
+    outline: none;
+}
+
+.input-group .eye-icon {
+    position: absolute;
+    right: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666; 
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.input-group .eye-icon:hover {
+    color: #007bff; 
+}
+
+.actions {
+    margin-top: 25px;
+}
+
+.actions button {
+    width: 100%;
+    padding: 14px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+}
+
+.actions button:hover {
+    background-color: #0056b3; 
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    color: #007bff; 
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.signup {
+    margin-top: 25px;
+}
+
+.signup p {
+    color: #666; 
+    font-size: 16px;
+}
+
+.signup a {
+    color: #007bff; 
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* Sign-Up specific styles */
+#signup-container {
+    display: none; 
+}
+
+#signup-container h2 {
+    margin-bottom: 20px; 
+    font-size: 28px; 
+    font-weight: 700; 
+}
+
+#signup-container .actions button {
+    margin-top: 20px;
+}
+
+#signup-container .actions a {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #007bff; 
+    text-decoration: none;
+}
+
+#signup-container .actions a:hover {
+    text-decoration: underline;
+}
+
+.sign-up-with {
+    font-size: 14px; 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+/* Google Sign-In Button */
+#google-login {
+    width: 50px; /* Set width for the icon button */
+    height: 50px; /* Set height for the icon button */
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    margin-top: 15px; /* Space above the button */
+    display: flex; /* Center the icon */
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+#google-login:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+.google-icon {
+    width: 24px; /* Set icon width */
+    height: 24px; /* Set icon height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .login-container, #signup-container {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+}

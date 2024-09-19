@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="loginstyles.css">
+</head>
+<body>
+    <!-- Login Container -->
+    <div class="login-container" id="login-container">
+        <h2>Login</h2>
+        <form action="#" method="POST" class="login-form">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                <span class="eye-icon" id="login-toggle-password">👁️</span>
+            </div>
+            <div class="actions">
+                <button type="submit">Login</button>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+        </form>
+        <p class="sign-up-with">Sign up with:</p>
+        <!-- Google Sign-In Button -->
+        <button id="google-login" aria-label="Sign in with Google">
+            <img src="images/GOOGLE.PNG" alt="Google Icon" class="google-icon">
+        </button>
+        <div class="signup">
+            <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Sign Up Container -->
+    <div id="signup-container" style="display:none;">
+        <h2>Sign Up</h2>
+        <form action="#" method="POST" class="signup-form">
+            <div class="input-group">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="signup-username" placeholder="Enter your Username" required>
+            </div>
+            <div class="input-group">
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="signup-password" placeholder="Enter your Password" required>
+                <span class="eye-icon" id="signup-toggle-password">👁️</span>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your Password" required>
+                <span class="eye-icon" id="confirm-toggle-password">👁️</span>
+            </div>
+            <div class="actions">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="actions">
+            <p>Already have an account? <a href="#" id="login-link">Sign In</a></p>
+        </div>
+    </div>
+
+    <script src="login.js" defer type="module"></script>
+</body>
+</html>

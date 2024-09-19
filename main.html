@@ -1,0 +1,203 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book and Student QR Code Management System</title>
+  <!-- Link to the external CSS file for styling -->
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <!-- Link to Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Top Navigation Panel with the system name and a logout button -->
+  <div class="top-panel">
+    <div class="left-section">
+    <img src="images/NCLOGO.PNG" alt="Logo" class="logo">
+    <h1>Norzagaray College Library System</h1>
+    </div>
+    <button id="logout-btn" aria-label="Log Out">
+    <i class="fas fa-sign-out-alt"></i>
+</button>
+  </div>
+
+  <div class="container">
+    <!-- Side Panel for navigation buttons to switch between different sections -->
+    <div class="side-panel">
+      <button id="dashboard-btn" class="active" onclick="showPanel('dashboard')">Dashboard</button>
+      <button id="attendance-btn" onclick="showPanel('attendance')">Student Library Attendance</button>
+      <button id="book-qr-generator-btn" onclick="showPanel('book-qr-generator')">Book QR Code Generator</button>
+      <button id="student-qr-generator-btn" onclick="showPanel('student-qr-generator')">Student QR Code Generator</button>
+      <button id="book-inventory-btn" onclick="showPanel('book-inventory')">Book Inventory</button>
+      <button id="student-list-btn" onclick="showPanel('student-list')">Student List</button>
+    </div>
+
+    <!-- Main content area to display content based on the selected section -->
+    <div class="main-content">
+      
+      <!-- Dashboard section -->
+      <div id="dashboard" class="panel active">
+        <header>
+          <h1>Dashboard</h1>
+          <p>Overview of library system</p>
+        </header>
+        <div class="dashboard-buttons">
+          <button onclick="showPanel('books-available')">Books Available</button>
+          <button onclick="showPanel('borrowed-books')">Borrowed Books</button>
+          <button onclick="showPanel('returned-books')">Returned Books</button>
+        </div>
+      </div>
+
+      <!-- Book QR Code Generator section -->
+      <div id="book-qr-generator" class="panel">
+        <header>
+          <h1>Book QR Code Generator</h1>
+          <p>Enter book details to generate a QR code</p>
+        </header>
+        <div class="form">
+          <label for="book-title">Book Title:</label>
+          <input type="text" id="book-title" placeholder="Book Title" maxlength="100" required>
+          
+          <label for="book-author">Book Author:</label>
+          <input type="text" id="book-author" placeholder="Book Author" maxlength="100" required>
+          
+          <label for="book-description">Book Description:</label>
+          <textarea id="book-description" placeholder="Book Description" maxlength="500" required></textarea>
+          
+          <!-- Button to generate the QR code for the book -->
+          <button id="generate-book-qr">Generate QR Code</button>
+        </div>
+        <div class="qr-code">
+          <img id="book-qrImage" src="" alt="Generated QR code for book details">
+        </div>
+      </div>
+
+      <!-- Student QR Code Generator section -->
+      <div id="student-qr-generator" class="panel">
+        <header>
+          <h1>Student QR Code Generator</h1>
+          <p>Enter student details to generate a QR code</p>
+        </header>
+        <div class="form">
+          <label for="student-name">Full Name:</label>
+          <input type="text" id="student-name" placeholder="Full Name" maxlength="150" pattern="[A-Za-z\s]+" title="Name should contain only letters and spaces" required>
+          
+          <label for="student-id">Student ID:</label>
+          <input type="text" id="student-id" placeholder="Student ID" maxlength="10" required>
+          
+          <label for="student-course">Course & Section:</label>
+          <input type="text" id="student-course" placeholder="Course & Section" maxlength="50" required>
+          
+          <label for="student-contact">Contact No:</label>
+          <input type="text" id="student-contact" placeholder="Contact No" maxlength="11" pattern="\d{11}" title="Contact number must be exactly 11 digits" required>
+          
+          <label for="student-gmail">Gmail:</label>
+          <input type="email" id="student-gmail" placeholder="Gmail" maxlength="100" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" title="Must be a valid Gmail address" required>
+          
+          <button id="generate-student-qr">Generate QR Code</button>
+        </div>
+        <div class="qr-code">
+          <img id="student-qrImage" src="" alt="Generated QR code for student details">
+        </div>
+      </div>
+
+      <!-- Book Inventory section -->
+      <div id="book-inventory" class="panel">
+        <header>
+          <h1>Book Inventory</h1>
+          <p>List of books with QR codes</p>
+        </header>
+        <ul id="inventory-list" class="inventory-list"></ul>
+      </div>
+
+      <!-- Student List section -->
+      <div id="student-list" class="panel">
+        <header>
+          <h1>Student List</h1>
+          <p>List of students with QR codes</p>
+        </header>
+        <ul id="student-list-items" class="inventory-list"></ul>
+      </div>
+
+      <!-- Student Library Attendance section -->
+      <div id="attendance" class="panel">
+        <header>
+          <h1>Student Library Attendance</h1>
+          <p>List of students who have scanned their QR codes</p>
+        </header>
+        <div id="attendance-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Contact</th>
+                <th>Gmail</th>
+                <th>Date & Time</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-list">
+              <!-- Attendance records will be dynamically inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Books Available section -->
+      <div id="books-available" class="panel">
+        <header>
+          <h1>Books Available</h1>
+          <p>List of available books</p>
+        </header>
+        <ul id="available-books-list" class="inventory-list">
+          <!-- Available books will be listed here -->
+        </ul>
+      </div>
+
+      <!-- Borrowed Books section -->
+      <div id="borrowed-books" class="panel">
+        <header>
+          <h1>Borrowed Books</h1>
+          <p>List of borrowed books</p>
+        </header>
+        <ul id="borrowed-books-list" class="inventory-list">
+          <!-- Borrowed books will be listed here -->
+        </ul>
+      </div>
+
+      <!-- Returned Books section -->
+      <div id="returned-books" class="panel">
+        <header>
+          <h1>Returned Books</h1>
+          <p>List of returned books</p>
+        </header>
+        <ul id="returned-books-list" class="inventory-list">
+          <!-- Returned books will be listed here -->
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" aria-label="Close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="book-success-popup" class="popup">
+    <p>Book QR code successfully generated!</p>
+  </div>
+
+  <div id="student-success-popup" class="popup">
+    <p>Student QR code successfully generated!</p>
+  </div>
+
+  <div id="notification" class="popup"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
