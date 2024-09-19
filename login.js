@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } 
+from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCOtr2mrlOSFfByUTqZQovR0KGKTzbCzfE",
@@ -12,6 +13,23 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+auth.languageCode = 'en';
+const auth = new GoogleAuthProvider(app);
+
+const googleLogin = document.getElementById("google-login")
+googleLogin.addEventListener("click", function(){
+    signInWithPopup(auth, provider)
+    .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const user = result.user;
+    console.log(user);
+    window.location.href = "main.html"
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+})
 
 document.addEventListener('DOMContentLoaded', function () {
     const loginContainer = document.getElementById('login-container');
